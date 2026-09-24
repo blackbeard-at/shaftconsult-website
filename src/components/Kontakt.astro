@@ -1,0 +1,50 @@
+---
+import MailIcon from '../assets/icons/mail.svg';
+import CallIcon from '../assets/icons/call.svg';
+---
+
+<section id="kontakt" class="section section--muted kontakt">
+  <div class="container kontakt__grid">
+    <div class="kontakt__item">
+      <MailIcon class="kontakt__icon" />
+      <p class="h4">Email</p>
+      <p class="text-regular">Sprechen Sie mit uns</p>
+      <a href="mailto:info@shaftconsult.de" class="kontakt__link">info@shaftconsult.de</a>
+    </div>
+    <div class="kontakt__item">
+      <CallIcon class="kontakt__icon" />
+      <p class="h4">Telefon</p>
+      <p class="text-regular">Ein Gespräch klärt, ob eine Analyse für Ihr Gebäude sinnvoll ist.</p>
+      <a href="tel:+4915114367320" class="kontakt__link">+49 1511 4367320</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .kontakt__grid {
+    display: grid;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .kontakt__item { text-align: center; }
+
+  .kontakt__icon {
+    width: 48px;
+    height: 48px;
+    margin-inline: auto;
+    margin-bottom: 24px;
+  }
+
+  .kontakt__item p.h4 { margin-bottom: 1rem; }
+  .kontakt__item p.text-regular { margin-bottom: 1.5rem; }
+
+  .kontakt__link {
+    text-decoration: underline;
+    font-size: var(--text-regular);
+  }
+
+  @media (min-width: 700px) {
+    .kontakt__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

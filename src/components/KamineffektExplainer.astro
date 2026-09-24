@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import diagramm from '../assets/images/kamineffekt-diagramm.png';
+import HeatIcon from '../assets/icons/heat.svg';
+---
+
+<section id="kamineffekt" class="section section--muted kamineffekt">
+  <div class="container kamineffekt__grid">
+    <div class="kamineffekt__text">
+      <HeatIcon class="kamineffekt__icon" />
+      <h2 class="h2">Der Kamineffekt im Aufzugsschacht</h2>
+      <p class="text-medium">
+        Warme Luft steigt im Aufzugsschacht ungehindert nach oben und entweicht
+        Tag und Nacht durch die vorgeschriebene Rauchableitungsöffnung, in fast
+        jedem Bestandsgebäude in Deutschland. Das ifeu-Institut beziffert das
+        bundesweite Einsparpotenzial auf bis zu 9 TWh Energie, das
+        VDMA-Positionspapier von 2026 auf bis zu 10 TWh und rund 3 Mt CO₂ pro
+        Jahr. Unsichtbar. Messbar. Bislang ignoriert.
+      </p>
+      <a href="#gegen-experte" class="btn btn-outline-dark">Mehr erfahren</a>
+    </div>
+    <Image
+      src={diagramm}
+      alt="Schematische Darstellung des Kamineffekts in einem Aufzugsschacht über sechs Geschosse, mit aufsteigender Warmluft und Öffnung zur Rauchableitung"
+      class="kamineffekt__diagramm"
+      widths={[400, 700, 1000]}
+      sizes="(min-width: 900px) 560px, 90vw"
+      loading="lazy"
+    />
+  </div>
+</section>
+
+<style>
+  .kamineffekt__grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .kamineffekt__icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+  }
+
+  .kamineffekt__text h2 { margin-bottom: 1.5rem; }
+  .kamineffekt__text p { margin-bottom: 1.5rem; color: var(--color-text); }
+
+  /* Explizite Größenregeln statt dem Default-Stretch-Verhalten von Grid-Items
+     zu vertrauen — verhindert Verzerrung des quadratischen Diagramms */
+  .kamineffekt__diagramm {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    justify-self: center;
+    align-self: center;
+  }
+
+  @media (min-width: 900px) {
+    .kamineffekt__grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

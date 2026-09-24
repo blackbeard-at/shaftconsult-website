@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Gegen_Ressourcen" data-name="Gegen_Ressourcen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.46 283.46">
+  <path style="fill: #14233d;fill-rule: evenodd" d="M141.73,0C63.46,0,0,63.46,0,141.73s63.46,141.73,141.73,141.73,141.73-63.46,141.73-141.73S220.01,0,141.73,0Z"/>
+  <path style="fill: none;
+        stroke: #eaab3d;
+        stroke-width: 11.34px;stroke-linecap: round" d="M59.37,208.75L224.09,74.71"/>
+  <path style="fill-rule: evenodd;fill: none;
+        stroke: #eaab3d;
+        stroke-width: 11.34px" d="M88.65,154.14c-17.69,38.21,8.83,82.9,50.92,84.32.72.02,1.44.04,2.17.04s1.45-.01,2.17-.04c42.08-1.42,68.61-46.11,50.92-84.32l-49.49-106.87c-1.42-3.06-5.76-3.06-7.17,0l-49.49,106.87Z"/>
+</svg>

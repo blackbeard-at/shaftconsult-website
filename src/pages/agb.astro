@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const paragraphs = [
+  {
+    title: '§ 1 Geltungsbereich',
+    text: '(1) Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge über Beratungsleistungen, Analysen, Gutachten und sonstige Dienstleistungen, die SHAFTCONSULT, Lars Walter-Sinsel (nachfolgend „SHAFTCONSULT") gegenüber ihren Auftraggebern erbringt.<br />(2) Diese AGB gelten ausschließlich gegenüber Unternehmern im Sinne des § 14 BGB. Verträge mit Verbrauchern schließt SHAFTCONSULT nicht ab.<br />(3) Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Auftraggebers werden nur dann Vertragsbestandteil, wenn SHAFTCONSULT ihrer Geltung ausdrücklich in Textform zugestimmt hat.',
+  },
+  {
+    title: '§ 2 Vertragsschluss',
+    text: '(1) Angebote von SHAFTCONSULT sind freibleibend und unverbindlich, sofern nicht ausdrücklich als verbindlich bezeichnet.<br />(2) Der Vertrag kommt durch Auftragsbestätigung in Textform (zum Beispiel E-Mail oder schriftlich) oder durch Beginn der Leistungserbringung zustande.<br />(3) Der konkrete Leistungsumfang ergibt sich aus dem jeweiligen Angebot beziehungsweise der Leistungsbeschreibung. Änderungen und Ergänzungen bedürfen der Textform.',
+  },
+  {
+    title: '§ 3 Leistungsbeschreibung und Herstellerunabhängigkeit',
+    text: '(1) SHAFTCONSULT erbringt herstellerunabhängige Fachberatung zu Energieverlusten und Brandschutzanforderungen im Aufzugsschacht. SHAFTCONSULT vertreibt keine Produkte und führt keine Installationsleistungen aus.<br />(2) Sofern SHAFTCONSULT im Rahmen einer Kooperation von einem Wartungs- oder Montageunternehmen beauftragt wird, den Auftraggeber zu beraten, wird dies dem Auftraggeber vor Beauftragung in Textform offengelegt. Eine Vergütung von SHAFTCONSULT ist in diesen Fällen nicht an eine bestimmte technische Empfehlung oder an ein bestimmtes Fabrikat gekoppelt.<br />(3) Die von SHAFTCONSULT erstellten Berechnungen, Einschätzungen und Berichte basieren auf den vom Auftraggeber zur Verfügung gestellten Daten sowie auf anerkannten fachlichen Kennwerten. Sie stellen keine bauaufsichtliche Genehmigung, keine Rechtsberatung und keine Ausführungsplanung dar.',
+  },
+  {
+    title: '§ 4 Mitwirkungspflichten des Auftraggebers',
+    text: '(1) Der Auftraggeber stellt SHAFTCONSULT alle für die Leistungserbringung erforderlichen Unterlagen, Pläne und Informationen (insbesondere Bestandsdaten, Brandschutzkonzepte und Aufzugsdokumentation) rechtzeitig und vollständig zur Verfügung.<br />(2) Verzögerungen oder Mehraufwand, die durch unvollständige, verspätete oder fehlerhafte Angaben des Auftraggebers entstehen, gehen nicht zulasten von SHAFTCONSULT und werden nach dem im jeweiligen Angebot ausgewiesenen Satz beziehungsweise nach gesonderter Vereinbarung abgerechnet.<br />(3) Sofern eine Vor-Ort-Begehung erforderlich ist, gewährt der Auftraggeber SHAFTCONSULT und von ihr benannten Personen unverzüglich Zugang zu den relevanten Objekten. Kosten für Wartezeiten durch verzögerten Zugang werden ebenfalls nach § 4 (2) abgerechnet.',
+  },
+  {
+    title: '§ 5 Vergütung und Zahlungsbedingungen',
+    text: '(1) Es gilt die im Angebot beziehungsweise in der Auftragsbestätigung ausgewiesene Vergütung. Alle Preise verstehen sich netto zzgl. der jeweils gültigen gesetzlichen Umsatzsteuer.<br />(2) Die Fälligkeit und Staffelung der Vergütung (zum Beispiel Anzahlung, Abschlagszahlungen, Restzahlung) ergibt sich aus dem jeweiligen Angebot beziehungsweise der Auftragsbestätigung. Trifft das Angebot keine Regelung, ist die vereinbarte Vergütung nach vollständiger Erbringung der Leistung zur Zahlung fällig.<br />(3) Rechnungen sind, sofern nicht anders vereinbart, innerhalb von 14 Tagen ab Rechnungsdatum ohne Abzug zur Zahlung fällig.<br />(4) Bei Zahlungsverzug ist SHAFTCONSULT berechtigt, Verzugszinsen in gesetzlicher Höhe (§ 288 BGB) zu berechnen sowie die Erbringung weiterer Leistungen bis zum Ausgleich fälliger Forderungen zurückzustellen.<br />(5) Eine Aufrechnung durch den Auftraggeber ist nur mit unbestrittenen oder rechtskräftig festgestellten Forderungen zulässig. Ein Zurückbehaltungsrecht steht dem Auftraggeber nur wegen Gegenansprüchen aus demselben Vertragsverhältnis zu.',
+  },
+  {
+    title: '§ 6 Reisekosten und Nebenkosten',
+    text: '(1) Reisekosten, Übernachtungskosten und sonstige Nebenkosten (zum Beispiel Reproduktionskosten, Porto) werden gesondert abgerechnet, soweit und in der Höhe, wie sie im jeweiligen Angebot beziehungsweise in der Auftragsbestätigung ausgewiesen sind.',
+  },
+  {
+    title: '§ 7 Einschaltung Dritter',
+    text: '(1) SHAFTCONSULT ist berechtigt, zur Erbringung einzelner Teilleistungen qualifizierte Dritte (zum Beispiel Kooperationspartner für Montage oder Brandschutz) hinzuzuziehen. Dritte werden von SHAFTCONSULT vertraglich zur Vertraulichkeit und Einhaltung der Datenschutzbestimmungen verpflichtet. Die Verantwortung für die von SHAFTCONSULT selbst erbrachten Beratungsleistungen bleibt hiervon unberührt.<br />(2) Die Auswahl, Beauftragung und Ausführung durch ausführende Unternehmen (Installation, Wartung) erfolgt nicht durch SHAFTCONSULT, sondern eigenverantwortlich durch den Auftraggeber beziehungsweise das von ihm beauftragte Unternehmen. Für die technische Ausführung durch Dritte übernimmt SHAFTCONSULT keine Haftung.',
+  },
+  {
+    title: '§ 8 Vertraulichkeit und Datenschutz',
+    text: '(1) Beide Parteien verpflichten sich, alle im Rahmen der Zusammenarbeit erlangten vertraulichen Informationen der jeweils anderen Partei vertraulich zu behandeln und nur für Zwecke der Vertragserfüllung zu verwenden.<br />(2) Die Verarbeitung personenbezogener Daten erfolgt im Einklang mit der Datenschutz-Grundverordnung (DSGVO). Personenbezogene Daten werden nur zur Vertragserfüllung verarbeitet und nach Abschluss des Projekts gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten (zum Beispiel nach § 147 AO) bestehen. Eine Weitergabe an Dritte erfolgt nur mit ausdrücklicher Zustimmung des Auftraggebers.<br />(3) Näheres regelt die Datenschutzerklärung auf der Website von SHAFTCONSULT.',
+  },
+  {
+    title: '§ 9 Urheberrecht und Nutzungsrechte',
+    text: '(1) Berichte, Berechnungen, Konzepte und sonstige Arbeitsergebnisse von SHAFTCONSULT sind urheberrechtlich geschützt.<br />(2) Der Auftraggeber erhält nach vollständiger Bezahlung ein einfaches, nicht übertragbares Nutzungsrecht für den vereinbarten Zweck, insbesondere zur internen Verwendung und zur Vorlage bei ausführenden Unternehmen ausschließlich im Rahmen des im jeweiligen Angebot bezeichneten Projekts.<br />(3) Eine Weitergabe an Dritte, auch innerhalb des Auftraggebers, sowie eine Veröffentlichung bedürfen der vorherigen schriftlichen Zustimmung von SHAFTCONSULT. Ausgenommen hiervon ist die Weitergabe an Behörden im Rahmen von Genehmigungsverfahren.',
+  },
+  {
+    title: '§ 10 Haftung',
+    text: '(1) SHAFTCONSULT haftet unbeschränkt für Vorsatz und grobe Fahrlässigkeit sowie nach Maßgabe des Produkthaftungsgesetzes.<br />(2) Bei Verletzung von Leben, Körper oder Gesundheit haftet SHAFTCONSULT auch für einfache Fahrlässigkeit unbeschränkt.<br />(3) Bei leicht fahrlässiger Verletzung wesentlicher Vertragspflichten (Kardinalpflichten), deren Erfüllung die ordnungsgemäße Durchführung des Vertrags überhaupt erst ermöglicht und auf deren Einhaltung der Auftraggeber regelmäßig vertrauen darf, ist die Haftung von SHAFTCONSULT der Höhe nach auf den 2-fachen Rechnungsbetrag der konkreten Leistung begrenzt, maximal jedoch auf die Deckungssumme der Berufshaftpflichtversicherung gemäß Absatz 6.<br />(4) Im Übrigen ist die Haftung für leicht fahrlässige Pflichtverletzungen ausgeschlossen.<br />(5) Die Haftung für die Richtigkeit der von SHAFTCONSULT erstellten Berechnungen und Einschätzungen setzt voraus, dass die vom Auftraggeber übergebenen Unterlagen und Angaben vollständig und zutreffend waren.<br />(6) SHAFTCONSULT unterhält eine Berufshaftpflichtversicherung. Die Haftung ist der Höhe nach auf die Deckungssumme der jeweils bestehenden Versicherung begrenzt, soweit nicht gesetzlich zwingend anders geregelt.',
+  },
+  {
+    title: '§ 11 Laufzeit und Kündigung',
+    text: '(1) Einzelaufträge enden mit vollständiger Erbringung der vereinbarten Leistung.<br />(2) Dauerhafte Kooperationsvereinbarungen (zum Beispiel mit Wartungsunternehmen) können von beiden Seiten mit einer Frist von vier Wochen zum Monatsende in Textform gekündigt werden, sofern im jeweiligen Vertrag nichts anderes vereinbart ist.<br />(3) Teilkündigungen sind nur für klar abgrenzbare Teilleistungen möglich. Bereits erbrachte Leistungen werden nach dem Verhältnis der vereinbarten Vergütung abgerechnet.<br />(4) Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt.',
+  },
+  {
+    title: '§ 12 Schlussbestimmungen',
+    text: '(1) Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.<br />(2) Erfüllungsort und Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist, soweit gesetzlich zulässig, der Sitz von SHAFTCONSULT (Gersfeld beziehungsweise Fulda).<br />(3) Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen hiervon unberührt. An die Stelle der unwirksamen Bestimmung tritt die gesetzliche Regelung.<br />(4) Änderungen dieser AGB bedürfen der Textform.',
+  },
+];
+---
+
+<BaseLayout title="AGB" description="Allgemeine Geschäftsbedingungen von SHAFTCONSULT.">
+  <Navbar />
+  <main class="section--navy legal">
+    <div class="container legal__inner">
+      <h1 class="h1">Allgemeine Geschäftsbedingungen (AGB)</h1>
+      <p class="text-medium">SHAFTCONSULT, Lars Walter-Sinsel</p>
+
+      {paragraphs.map((p) => (
+        <p class="text-medium" set:html={`${p.title}<br />${p.text}`} />
+      ))}
+
+      <p class="text-medium">
+        SHAFTCONSULT, Lars Walter-Sinsel<br />
+        Bahnhofstr. 14, 36037 Fulda<br />
+        E-Mail: <a href="mailto:info@shaftconsult.de">info@shaftconsult.de</a>,
+        Telefon: <a href="tel:+4915114367320">01511 4367320</a>
+      </p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal__inner {
+    padding-block: clamp(3rem, 8vw, 5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .legal h1 { margin-bottom: 0.5rem; }
+  .legal p { color: rgba(255, 255, 255, 0.85); }
+  .legal a { color: #fff; }
+</style>

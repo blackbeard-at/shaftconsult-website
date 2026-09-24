@@ -1,0 +1,80 @@
+---
+import Logo from '../assets/icons/logo-stacked.svg';
+
+const items = [
+  {
+    title: 'Mitautor Anhang 4, TRBS 1201-4',
+    text: 'Unabhängige Expertise, belegt durch Normung.',
+  },
+  {
+    title: 'Verbandsarbeit als Hersteller',
+    text: 'Mitarbeit in Branchenverbänden (VDMA, VfA, ZVEI) während meiner Zeit als Hersteller.',
+  },
+  {
+    title: 'Diverse Fachartikel in Branchenmagazinen',
+    text: 'Veröffentlichungen zu Energieverlusten und Aufzugstechnik.',
+  },
+];
+---
+
+<section id="kompetenz" class="section section--muted erfahrung">
+  <div class="container erfahrung__grid">
+    <div class="erfahrung__logo-stage">
+      <Logo class="erfahrung__logo" />
+    </div>
+    <div class="erfahrung__content">
+      <h2 class="h2">Erfahrung, die zählt.</h2>
+      <ul class="erfahrung__list">
+        {items.map((item) => (
+          <li>
+            <p class="h5">{item.title}</p>
+            <p class="h5 erfahrung__desc">{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .erfahrung__grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .erfahrung__logo-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .erfahrung__logo {
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .erfahrung__content h2 { margin-bottom: 2.5rem; }
+
+  .erfahrung__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .erfahrung__list li {
+    background: #fff;
+    padding: 24px 32px;
+    border-left: 3px solid var(--color-text);
+  }
+
+  .erfahrung__list p { font-size: 22px; }
+  .erfahrung__desc { font-weight: 700; }
+
+  @media (min-width: 900px) {
+    .erfahrung__grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

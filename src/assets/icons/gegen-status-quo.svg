@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Gegen_StatusQuo" data-name="Gegen_StatusQuo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.46 283.46">
+  <path style="fill: #14233d;fill-rule: evenodd" d="M141.73,0C63.46,0,0,63.46,0,141.73s63.46,141.73,141.73,141.73,141.73-63.46,141.73-141.73S220.01,0,141.73,0Z"/>
+  <g>
+    <path style="fill-rule: evenodd;fill: none;
+        stroke: #eaab3d;
+        stroke-linecap: round;
+        stroke-width: 11.34px" d="M70.13,71.43c-18.21,18.21-29.47,43.36-29.47,71.14,0,55.56,45.04,100.61,100.61,100.61s100.61-45.04,100.61-100.61c0-27.78-11.26-52.93-29.47-71.14"/>
+    <path style="fill-rule: evenodd;fill: #eaab3d" d="M191.54,58.92l18.42,18.04c.77.75,2.06.43,2.39-.59l8.83-27.45c.37-1.13-.72-2.2-1.85-1.81l-27.26,9.4c-1.02.35-1.31,1.65-.54,2.4Z"/>
+  </g>
+</svg>

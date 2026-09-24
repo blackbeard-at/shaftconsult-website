@@ -1,0 +1,208 @@
+---
+import Logo from '../assets/icons/logo-inline.svg';
+import LogoIcon from '../assets/icons/logo-icon.svg';
+
+const links = [
+  { href: '#kamineffekt', label: 'Kamineffekt' },
+  { href: '#gegen-experte', label: 'Der GEGEN Experte' },
+  { href: '#ueber-lars', label: 'Über Lars' },
+  { href: '#kompetenz', label: 'Kompetenz' },
+  { href: '#leistungen', label: 'Leistungen' },
+];
+---
+
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="/" class="navbar__logo" aria-label="SHAFTCONSULT Startseite">
+      <Logo class="navbar__logo-full" />
+      <LogoIcon class="navbar__logo-icon" />
+    </a>
+    <div class="navbar__right">
+      <nav class="navbar__nav" aria-label="Hauptnavigation">
+        <ul>
+          {links.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <a href="#kontakt" class="btn btn-fill-navy navbar__cta">Anfragen</a>
+    </div>
+    <button
+      class="navbar__burger"
+      aria-label="Menü öffnen"
+      aria-expanded="false"
+      aria-controls="navbar-mobile"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav id="navbar-mobile" class="navbar__mobile" aria-label="Mobile Navigation">
+    <div class="navbar__mobile-inner">
+      <ul>
+        {links.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+        <li><a href="#kontakt" class="btn btn-fill-navy navbar__mobile-cta">Anfragen</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-bg-muted);
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 104px;
+  }
+
+  .navbar__logo {
+    display: block;
+    position: relative;
+  }
+
+  .navbar__logo-full {
+    width: clamp(140px, 20vw, 180px);
+  }
+
+  .navbar__logo-icon {
+    display: none;
+    width: 40px;
+  }
+
+  .navbar__right {
+    display: none;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  .navbar__nav { display: none; }
+
+  .navbar__nav ul {
+    display: flex;
+    gap: clamp(1rem, 2vw, 2rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar__nav a {
+    text-decoration: none;
+    font-size: var(--text-regular);
+    font-weight: 400;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  .navbar__cta { display: none; }
+
+  /* Burger — drei Balken, die zum X animieren */
+  .navbar__burger {
+    position: relative;
+    width: 28px;
+    height: 20px;
+    padding: 0;
+  }
+
+  .navbar__burger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-navy);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+  }
+
+  .navbar__burger span:nth-child(1) { top: 0; }
+  .navbar__burger span:nth-child(2) { top: 9px; }
+  .navbar__burger span:nth-child(3) { top: 18px; }
+
+  .navbar__burger[aria-expanded="true"] span:nth-child(1) {
+    top: 9px;
+    transform: rotate(45deg);
+  }
+
+  .navbar__burger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__burger[aria-expanded="true"] span:nth-child(3) {
+    top: 9px;
+    transform: rotate(-45deg);
+  }
+
+  .navbar__mobile {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+
+  .navbar__mobile.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .navbar__mobile-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .navbar__mobile ul {
+    list-style: none;
+    margin: 0;
+    padding: 1rem var(--page-padding) 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    background: var(--color-bg-muted);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .navbar__mobile a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .navbar__mobile-cta {
+    color: #fff !important;
+    justify-content: center;
+  }
+
+  /* Icon statt vollem Logo in der mobilen Navigation (Burger-Breakpoint) */
+  @media (max-width: 899px) {
+    .navbar__logo-full { display: none; }
+    .navbar__logo-icon { display: block; }
+  }
+
+  @media (min-width: 900px) {
+    .navbar__right { display: flex; }
+    .navbar__nav, .navbar__cta { display: flex; }
+    .navbar__burger, .navbar__mobile { display: none !important; }
+  }
+</style>
+
+<script>
+  const burger = document.querySelector<HTMLButtonElement>('.navbar__burger');
+  const mobileNav = document.getElementById('navbar-mobile');
+
+  burger?.addEventListener('click', () => {
+    const isOpen = burger.getAttribute('aria-expanded') === 'true';
+
+    if (isOpen) {
+      burger.setAttribute('aria-expanded', 'false');
+      mobileNav?.classList.remove('is-open');
+    } else {
+      burger.setAttribute('aria-expanded', 'true');
+      mobileNav?.classList.add('is-open');
+    }
+  });
+</script>

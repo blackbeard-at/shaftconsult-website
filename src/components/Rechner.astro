@@ -1,0 +1,142 @@
+---
+// Faktoren aus der Kennzahlen-Section — bei Änderung dort auch hier anpassen
+const KWH_PRO_AUFZUG = 15000;
+const EUR_PRO_AUFZUG = 1500;
+const CO2_PRO_AUFZUG = 3;
+---
+
+<section class="section--muted section rechner">
+  <div class="container rechner__inner">
+    <h2>Wie viel Energie kann Ihr Portfolio einsparen?</h2>
+    <p>Tragen Sie hier die grobe Anzahl Ihrer Aufzüge ein.</p>
+
+    <form class="rechner__form" data-kwh={KWH_PRO_AUFZUG} data-eur={EUR_PRO_AUFZUG} data-co2={CO2_PRO_AUFZUG}>
+      <label for="anzahl-aufzuege" class="sr-only">Anzahl Aufzüge</label>
+      <input
+        type="number"
+        id="anzahl-aufzuege"
+        name="anzahl"
+        min="1"
+        step="1"
+        placeholder="Anzahl Aufzüge"
+        inputmode="numeric"
+        required
+      />
+      <button type="submit" class="btn-primary">Ausrechnen</button>
+    </form>
+
+    <div class="rechner__result" aria-live="polite" hidden>
+      <div>
+        <span class="rechner__result-value" data-output="kwh"></span>
+        <span class="rechner__result-label">kWh pro Jahr</span>
+      </div>
+      <div>
+        <span class="rechner__result-value" data-output="eur"></span>
+        <span class="rechner__result-label">Einsparpotenzial pro Jahr</span>
+      </div>
+      <div>
+        <span class="rechner__result-value" data-output="co2"></span>
+        <span class="rechner__result-label">t CO₂ eingespart pro Jahr</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rechner__inner h2 {
+    font-size: var(--step-2);
+    margin-bottom: 0.5rem;
+    max-width: 22ch;
+  }
+
+  .rechner__inner > p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.75rem;
+  }
+
+  .rechner__form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    max-width: 480px;
+  }
+
+  .rechner__form input {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(12, 35, 64, 0.25);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: var(--step-0);
+  }
+
+  .rechner__form input:focus-visible {
+    outline: 2px solid var(--color-steel);
+    outline-offset: 1px;
+  }
+
+  .rechner__result {
+    margin-top: 2.5rem;
+    display: grid;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(12, 35, 64, 0.12);
+  }
+
+  .rechner__result-value {
+    display: block;
+    font-size: var(--step-3);
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .rechner__result-label {
+    color: var(--color-text-muted);
+    font-size: var(--step--1);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (min-width: 700px) {
+    .rechner__result {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('.rechner__form');
+  const result = document.querySelector<HTMLElement>('.rechner__result');
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const input = form.querySelector<HTMLInputElement>('#anzahl-aufzuege');
+    const anzahl = Number(input?.value ?? 0);
+    if (!anzahl || anzahl < 1) return;
+
+    const kwh = anzahl * Number(form.dataset.kwh);
+    const eur = anzahl * Number(form.dataset.eur);
+    const co2 = anzahl * Number(form.dataset.co2);
+
+    const formatter = new Intl.NumberFormat('de-DE');
+
+    const kwhOut = result?.querySelector('[data-output="kwh"]');
+    const eurOut = result?.querySelector('[data-output="eur"]');
+    const co2Out = result?.querySelector('[data-output="co2"]');
+
+    if (kwhOut) kwhOut.textContent = formatter.format(kwh);
+    if (eurOut) eurOut.textContent = `${formatter.format(eur)} €`;
+    if (co2Out) co2Out.textContent = formatter.format(co2);
+
+    result?.removeAttribute('hidden');
+  });
+</script>

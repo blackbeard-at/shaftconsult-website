@@ -1,0 +1,92 @@
+---
+import AnalyticsIcon from '../assets/icons/analytics.svg';
+import CheckIcon from '../assets/icons/check.svg';
+import SavingsIcon from '../assets/icons/savings.svg';
+import StepIcon from '../assets/icons/step.svg';
+
+const steps = [
+  {
+    Icon: AnalyticsIcon,
+    title: 'Analyse',
+    text: 'Erfassung und Bewertung des Energieverlusts im Aufzugsschacht.',
+  },
+  {
+    Icon: CheckIcon,
+    title: 'Technische Bewertung',
+    text: 'Prüfung der baulichen und technischen Gegebenheiten vor Ort.',
+  },
+  {
+    Icon: SavingsIcon,
+    title: 'Wirtschaftliche Einschätzung',
+    text: 'Berechnung der Einsparpotenziale und Amortisationszeiten.',
+  },
+  {
+    Icon: StepIcon,
+    title: 'Konkrete Entscheidungsgrundlage',
+    text: 'Einsparung, Investition, Amortisation, klar beziffert.',
+  },
+];
+---
+
+<section id="leistungen" class="section--navy section vier-schritte">
+  <div class="container">
+    <h2 class="h2">Unabhängige Analyse für bestehende Gebäude.</h2>
+    <p class="vier-schritte__sub text-medium">Vier Schritte, konsequent auf Ihren Bestand zugeschnitten.</p>
+
+    <ul class="vier-schritte__list">
+      {steps.map(({ Icon, title, text }) => (
+        <li>
+          <Icon class="vier-schritte__icon" />
+          <p class="h5 vier-schritte__title">{title}</p>
+          <p class="text-regular vier-schritte__text">{text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .vier-schritte h2 { margin-bottom: 0.75rem; max-width: 20ch; }
+  .vier-schritte__sub { color: rgba(255, 255, 255, 0.85); margin-bottom: 56px; }
+
+  .vier-schritte__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 32px;
+  }
+
+  /* Icon links neben der Headline, Text darunter — an der Headline
+     ausgerichtet, nicht am Icon */
+  .vier-schritte__list li {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    column-gap: 24px;
+    row-gap: 8px;
+  }
+
+  .vier-schritte__icon {
+    grid-column: 1;
+    grid-row: 1;
+    width: 48px;
+    height: 48px;
+    align-self: start;
+  }
+
+  .vier-schritte__title {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .vier-schritte__text {
+    grid-column: 2;
+    grid-row: 2;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  @media (min-width: 900px) {
+    .vier-schritte__list { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>

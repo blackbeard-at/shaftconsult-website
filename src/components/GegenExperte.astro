@@ -1,0 +1,150 @@
+---
+import EnergieIcon from '../assets/icons/gegen-energieverluste.svg';
+import RessourcenIcon from '../assets/icons/gegen-ressourcen.svg';
+import StatusQuoIcon from '../assets/icons/gegen-status-quo.svg';
+
+const points = [
+  {
+    id: 'energieverluste',
+    title: 'GEGEN Energieverluste',
+    text: 'Jede Kilowattstunde zählt. Energie, die durch den Schacht entweicht, ist unwiederbringlich verloren.',
+  },
+  {
+    id: 'ressourcen',
+    title: 'GEGEN Verschwendung von Ressourcen',
+    text: 'Ressourcen sind begrenzt. Effizienz beginnt mit dem Vermeiden von Verlusten.',
+  },
+  {
+    id: 'status-quo',
+    title: 'GEGEN den Status quo',
+    text: 'Nur wer Bestehendes hinterfragt, findet neue Lösungen. SHAFTCONSULT steht für Veränderung.',
+  },
+];
+---
+
+<section id="gegen-experte" class="section section--muted gegen-experte">
+  <div class="container">
+    <div class="gegen-experte__intro">
+      <p class="gegen-experte__statement h2">
+        Was hält Sie noch auf? Es gibt kaum eine bessere Rendite für Ihr Kapital.
+      </p>
+      <p class="gegen-experte__sub text-medium">
+        SHAFTCONSULT liefert unabhängige Analyse und Bewertung, bevor investiert
+        wird. Keine Bindung an Hersteller, volle Konzentration auf Ihr Ergebnis.
+      </p>
+      <a href="#kompetenz" class="btn btn-outline-dark">Mehr erfahren</a>
+    </div>
+
+    <div class="gegen-experte__interactive">
+      <div class="gegen-experte__stage" aria-hidden="true">
+        <EnergieIcon data-icon="energieverluste" class="gegen-experte__stage-icon is-active" />
+        <RessourcenIcon data-icon="ressourcen" class="gegen-experte__stage-icon" />
+        <StatusQuoIcon data-icon="status-quo" class="gegen-experte__stage-icon" />
+      </div>
+
+      <ul class="gegen-experte__list" role="tablist" aria-label="GEGEN-Positionierung">
+        {points.map((point, i) => (
+          <li>
+            <button
+              type="button"
+              class:list={['gegen-experte__trigger', { 'is-active': i === 0 }]}
+              data-target={point.id}
+              role="tab"
+              aria-selected={i === 0}
+            >
+              <h3 class="h4">{point.title}</h3>
+              <p class="text-regular">{point.text}</p>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gegen-experte__intro {
+    text-align: center;
+    max-width: 768px;
+    margin-inline: auto;
+    margin-bottom: 80px;
+  }
+
+  .gegen-experte__statement { margin-bottom: 1.5rem; }
+  .gegen-experte__sub { margin-bottom: 1.75rem; color: var(--color-text); }
+
+  .gegen-experte__interactive {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .gegen-experte__stage {
+    position: relative;
+    width: 100%;
+    max-width: 425px;
+    aspect-ratio: 1;
+    margin-inline: auto;
+  }
+
+  .gegen-experte__stage-icon {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .gegen-experte__stage-icon.is-active { opacity: 1; }
+
+  .gegen-experte__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gegen-experte__list li + li { border-top: 1px solid var(--border-light); }
+
+  .gegen-experte__trigger {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding-block: 24px;
+  }
+
+  .gegen-experte__trigger h3 { margin-bottom: 0.5rem; }
+  .gegen-experte__trigger p { color: var(--color-text); }
+
+  .gegen-experte__trigger:focus-visible {
+    outline: 2px solid var(--color-steel);
+    outline-offset: 2px;
+  }
+
+  @media (min-width: 900px) {
+    .gegen-experte__interactive {
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+  }
+</style>
+
+<script>
+  const triggers = document.querySelectorAll<HTMLButtonElement>('.gegen-experte__trigger');
+  const icons = document.querySelectorAll<SVGElement>('.gegen-experte__stage-icon');
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const target = trigger.dataset.target;
+
+      triggers.forEach((t) => {
+        t.classList.toggle('is-active', t === trigger);
+        t.setAttribute('aria-selected', String(t === trigger));
+      });
+
+      icons.forEach((icon) => {
+        icon.classList.toggle('is-active', icon.dataset.icon === target);
+      });
+    });
+  });
+</script>

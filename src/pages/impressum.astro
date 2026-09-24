@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Impressum" description="Impressum von SHAFTCONSULT.">
+  <Navbar />
+  <main class="section--navy legal">
+    <div class="container legal__inner">
+      <h1 class="h1">Impressum</h1>
+
+      <div>
+        <p class="text-medium">
+          SHAFTCONSULT<br />
+          Lars Walter-Sinsel<br />
+          Bahnhofstraße 14<br />
+          36037 Fulda
+        </p>
+      </div>
+
+      <div>
+        <p class="text-medium">
+          E-Mail-Adresse: <a href="mailto:info@shaftconsult.de">info@shaftconsult.de</a>
+        </p>
+      </div>
+
+      <div>
+        <p class="text-medium">Umsatzsteuer-Identifikationsnummer (USt-ID): wird nachgereicht</p>
+        <p class="text-medium">Geschäftsbereich: wird nachgereicht</p>
+        <p class="text-medium">AGB: <a href="/agb">shaftconsult.de/agb</a></p>
+        <!-- TODO: "AGB: wird nachgereicht" aus der Vorlage durch echten Link ersetzt,
+             da die AGB-Seite bereits existiert. Bitte bestätigen, dass das so passt. -->
+      </div>
+
+      <div>
+        <p class="text-medium">Bildquellen und Urheberrechtshinweise:</p>
+        <p class="text-medium">Actionbild &amp; Siegerbild von Lars Walter-Sinsel: Charlie Rolff</p>
+        <p class="text-medium">
+          Portrait von Lars Walter-Sinsel: Johannes Ruppel,
+          <a href="https://www.johannesruppel.de/" target="_blank" rel="noopener">johannesruppel.de</a>
+        </p>
+        <p class="text-medium">
+          Frankfurter Skyline Bild: Matthias Merget,
+          <a href="https://emerge-film.de" target="_blank" rel="noopener">emerge-film.de</a>
+        </p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal__inner {
+    padding-block: clamp(3rem, 8vw, 5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .legal h1 { margin-bottom: 1rem; }
+  .legal p { color: rgba(255, 255, 255, 0.85); }
+  .legal a { color: #fff; }
+</style>

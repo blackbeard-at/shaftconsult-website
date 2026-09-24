@@ -1,0 +1,123 @@
+---
+import LogoClaim from '../assets/icons/logo-claim.svg';
+import LinkedinIcon from '../assets/icons/linkedin.svg';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer section--muted">
+  <div class="container footer__top">
+    <div class="footer__brand">
+      <LogoClaim class="footer__logo" />
+    </div>
+
+    <nav class="footer__col" aria-label="Menü">
+      <p class="footer__heading">Menü</p>
+      <ul>
+        <li><a href="/">Startseite</a></li>
+        <li><a href="#gegen-experte">Der GEGEN Experte</a></li>
+        <li><a href="#ueber-lars">Über Lars</a></li>
+        <li><a href="#kompetenz">Kompetenz</a></li>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer__col" aria-label="Service">
+      <p class="footer__heading">Service</p>
+      <ul>
+        <li><a href="#leistungen">Analyse</a></li>
+        <li><a href="#leistungen">Technische Bewertung</a></li>
+        <li><a href="#leistungen">Wirtschaftliche Einschätzung</a></li>
+        <li><a href="#leistungen">Konkrete Entscheidungsgrundlage</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer__col" aria-label="Folgen Sie uns">
+      <p class="footer__heading">Folgen Sie uns</p>
+      <ul>
+        <li>
+          <a href="https://www.linkedin.com/in/lars-walter-sinsel-35482a111/" target="_blank" rel="noopener noreferrer" class="footer__social">
+            <span class="footer__social-icon"><LinkedinIcon /></span>
+            LinkedIn
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container footer__bottom">
+    <p class="text-small">© {year} SHAFTCONSULT. Alle Rechte vorbehalten.</p>
+    <div class="footer__legal">
+      <a href="/datenschutz" class="text-small">Datenschutz</a>
+      <a href="/impressum" class="text-small">Impressum</a>
+      <a href="/agb" class="text-small">AGB</a>
+      <a href="#" class="text-small" id="cookie-settings-link">Cookie Einstellungen</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer__top {
+    display: grid;
+    gap: 2.5rem;
+    padding-top: 65px;
+    padding-bottom: 48px;
+  }
+
+  .footer__logo { width: 344px; margin-bottom: 0.75rem; }
+
+  .footer__heading {
+    font-size: var(--text-regular);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .footer__col { text-align: left; }
+
+  .footer__col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__col li { padding-block: 8px; }
+
+  .footer__col a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: var(--text-small);
+  }
+
+  .footer__social {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer__social-icon { width: 24px; height: 24px; }
+  .footer__social-icon :global(svg) { width: 100%; height: 100%; }
+
+  .footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    padding-block: 32px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .footer__legal { display: flex; gap: 1.5rem; }
+  .footer__legal a { text-decoration: underline; color: var(--color-text); }
+
+  @media (min-width: 700px) {
+    .footer__top { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+  }
+</style>
+
+<script>
+  document.getElementById('cookie-settings-link')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.openCookieSettings?.();
+  });
+</script>

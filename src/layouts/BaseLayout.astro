@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import CookieBanner from '../components/CookieBanner.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const siteUrl = 'https://shaftconsult.de';
+const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = `${siteUrl}/social-share.png`;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+    <title>{title} — SHAFTCONSULT</title>
+
+    <!-- Open Graph / Social Share -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SHAFTCONSULT" />
+    <meta property="og:title" content={`${title} — SHAFTCONSULT`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="2986" />
+    <meta property="og:image:height" content="1660" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} — SHAFTCONSULT`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body>
+    <slot />
+    <CookieBanner />
+  </body>
+</html>

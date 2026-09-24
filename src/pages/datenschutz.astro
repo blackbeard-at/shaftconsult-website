@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+  {
+    id: 'm716',
+    title: 'Präambel',
+    html: `<p>Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz als "Daten" bezeichnet) wir zu welchen Zwecken und in welchem Umfang verarbeiten. Die Datenschutzerklärung gilt für alle von uns durchgeführten Verarbeitungen personenbezogener Daten im Rahmen dieser Website.</p><p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p><p>Stand: 23. September 2026</p>`,
+  },
+  {
+    id: 'm3',
+    title: 'Verantwortlicher',
+    html: `<p>SHAFTCONSULT<br />Lars Walter-Sinsel<br />Bahnhofstraße 14<br />36037 Fulda</p><p>E-Mail-Adresse: <a href="mailto:info@shaftconsult.de">info@shaftconsult.de</a></p><p>Impressum: <a href="/impressum">shaftconsult.de/impressum</a></p>`,
+  },
+  {
+    id: 'm2427',
+    title: 'Maßgebliche Rechtsgrundlagen',
+    html: `<p>Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten.</p><ul><li><strong>Einwilligung (Art. 6 Abs. 1 S. 1 lit. a DSGVO)</strong> — die betroffene Person hat ihre Einwilligung in die Verarbeitung für einen bestimmten Zweck gegeben.</li><li><strong>Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b DSGVO)</strong> — die Verarbeitung ist zur Erfüllung eines Vertrags oder zur Bearbeitung einer Anfrage erforderlich.</li><li><strong>Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f DSGVO)</strong> — die Verarbeitung ist zur Wahrung berechtigter Interessen notwendig, sofern die Interessen der betroffenen Person nicht überwiegen.</li></ul><p>Zusätzlich zu den Regelungen der DSGVO gelten nationale Datenschutzvorschriften, insbesondere das Bundesdatenschutzgesetz (BDSG).</p>`,
+  },
+  {
+    id: 'm27',
+    title: 'Sicherheitsmaßnahmen',
+    html: `<p>Wir treffen geeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten.</p><p><strong>Sicherung von Online-Verbindungen durch TLS-/SSL-Verschlüsselung (HTTPS):</strong> Alle Datenübertragungen über diese Website sind über HTTPS verschlüsselt.</p><p><strong>Kürzung der IP-Adresse (IP-Masking):</strong> Sofern IP-Adressen im Rahmen von Google Analytics verarbeitet werden, erfolgt dies pseudonymisiert — siehe Abschnitt "Einsatz von Cookies und Google Analytics".</p>`,
+  },
+  {
+    id: 'm24',
+    title: 'Internationale Datentransfers',
+    html: `<p>Beim Einsatz von Google Analytics (siehe unten) kommt es zu einer Datenübermittlung in die USA. Wir stützen uns hierbei auf das Data Privacy Framework (DPF), das durch einen Angemessenheitsbeschluss der EU-Kommission vom 10.07.2023 als sicherer Rechtsrahmen anerkannt wurde, ergänzt um Standardvertragsklauseln mit dem Anbieter.</p>`,
+  },
+  {
+    id: 'm12',
+    title: 'Allgemeine Informationen zur Datenspeicherung und Löschung',
+    html: `<p>Wir löschen personenbezogene Daten, sobald die zugrundeliegende Einwilligung widerrufen wird oder keine rechtliche Grundlage für die weitere Verarbeitung mehr besteht — sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p><p>Für geschäftliche Unterlagen (z. B. Rechnungen) gelten die gesetzlichen Aufbewahrungsfristen von bis zu 10 Jahren nach § 147 AO bzw. § 257 HGB.</p>`,
+  },
+  {
+    id: 'm10',
+    title: 'Rechte der betroffenen Personen',
+    html: `<p>Ihnen stehen als Betroffene nach der DSGVO folgende Rechte zu (Art. 15–21 DSGVO):</p><ul><li><strong>Auskunftsrecht:</strong> Bestätigung und Auskunft über die Sie betreffenden gespeicherten Daten.</li><li><strong>Recht auf Berichtigung</strong> unrichtiger oder unvollständiger Daten.</li><li><strong>Recht auf Löschung und Einschränkung der Verarbeitung.</strong></li><li><strong>Recht auf Datenübertragbarkeit.</strong></li><li><strong>Widerspruchsrecht</strong> gegen Verarbeitungen, die auf berechtigten Interessen beruhen.</li><li><strong>Widerrufsrecht</strong> für erteilte Einwilligungen, jederzeit mit Wirkung für die Zukunft.</li><li><strong>Beschwerderecht bei einer Datenschutzaufsichtsbehörde.</strong></li></ul>`,
+  },
+  {
+    id: 'm225',
+    title: 'Bereitstellung des Onlineangebots und Webhosting',
+    html: `<p>Wir verarbeiten die Daten der Nutzer, um ihnen diese Website zur Verfügung stellen zu können. Dazu gehört insbesondere die IP-Adresse, die notwendig ist, um Inhalte an den Browser zu übermitteln.</p><p><strong>Server-Logfiles:</strong> Der Zugriff auf unser Onlineangebot wird protokolliert (u. a. abgerufene Seiten, Datum/Uhrzeit, Browsertyp, Betriebssystem, IP-Adresse). Dies dient der Sicherheit und Stabilität des Servers. Logfile-Daten werden nach maximal 30 Tagen gelöscht oder anonymisiert.</p><p><strong>Rechtsgrundlage:</strong> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f DSGVO).</p>`,
+  },
+  {
+    id: 'm134',
+    title: 'Einsatz von Cookies und Google Analytics',
+    html: `<p>Diese Website verwendet ausschließlich Cookies im Zusammenhang mit Google Analytics zur Webanalyse. Es werden keine weiteren Cookies (z. B. für Werbung, Social-Media-Plugins oder Tracking über mehrere Websites hinweg) eingesetzt.</p><p>Beim ersten Besuch der Website wird Ihnen ein Cookie-Banner angezeigt, über das Sie der Nutzung von Google Analytics aktiv zustimmen oder sie ablehnen können. Erst nach Ihrer Zustimmung wird das Google-Analytics-Skript geladen. Ihre Entscheidung wird in Ihrem Browser (Local Storage) gespeichert und kann jederzeit über den Link "Cookie Einstellungen" im Footer geändert werden.</p><p><strong>Google Analytics:</strong> Wir verwenden Google Analytics zur Messung und Analyse der Nutzung dieser Website auf Grundlage einer pseudonymen Nutzeridentifikationsnummer. Diese enthält keine eindeutigen Daten wie Namen oder E-Mail-Adressen. Erfasst werden u. a. aufgerufene Seiten, Verweildauer, technische Angaben zu Browser und Endgerät sowie die Quelle des Zugriffs. Google Analytics protokolliert und speichert keine individuellen IP-Adressen für EU-Nutzer; IP-Adressdaten werden ausschließlich zur groben Standortbestimmung (Land/Region/Stadt) verwendet, bevor sie sofort gelöscht werden.</p><ul><li><strong>Dienstanbieter:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland</li><li><strong>Rechtsgrundlage:</strong> Einwilligung (Art. 6 Abs. 1 S. 1 lit. a DSGVO)</li><li><strong>Speicherdauer:</strong> Cookies bis zu 2 Jahre</li><li><strong>Website:</strong> <a href="https://marketingplatform.google.com/intl/de/about/analytics/" target="_blank" rel="noopener">marketingplatform.google.com</a></li><li><strong>Datenschutzerklärung:</strong> <a href="https://business.safety.google/privacy/" target="_blank" rel="noopener">business.safety.google/privacy</a></li><li><strong>Grundlage Drittlandtransfer:</strong> Data Privacy Framework (DPF), Standardvertragsklauseln</li><li><strong>Widerspruchsmöglichkeit (Opt-Out):</strong> <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank" rel="noopener">Browser-Add-on von Google</a>, oder einfach über "Cookie Einstellungen" im Footer ablehnen</li></ul>`,
+  },
+  {
+    id: 'm182',
+    title: 'Kontaktaufnahme',
+    html: `<p>Wenn Sie per E-Mail oder Telefon Kontakt mit uns aufnehmen, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, Kontaktdaten, Inhalt Ihrer Anfrage) zum Zweck der Bearbeitung Ihres Anliegens.</p><ul><li><strong>Rechtsgrundlage:</strong> Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b DSGVO), Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f DSGVO)</li></ul>`,
+  },
+  {
+    id: 'm15',
+    title: 'Änderung und Aktualisierung',
+    html: `<p>Wir bitten Sie, sich regelmäßig über den Inhalt dieser Datenschutzerklärung zu informieren. Wir passen sie an, sobald Änderungen unserer Datenverarbeitung dies erforderlich machen.</p>`,
+  },
+  {
+    id: 'm42',
+    title: 'Begriffsdefinitionen',
+    html: `<ul><li><strong>Personenbezogene Daten:</strong> Alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen.</li><li><strong>Verarbeitung:</strong> Jeder Vorgang im Zusammenhang mit personenbezogenen Daten — Erheben, Speichern, Übermitteln oder Löschen.</li><li><strong>Verantwortlicher:</strong> Die Stelle, die über Zwecke und Mittel der Verarbeitung personenbezogener Daten entscheidet.</li><li><strong>Nutzungsdaten:</strong> Informationen darüber, wie Nutzer mit einer Website interagieren (z. B. aufgerufene Seiten, Verweildauer, Gerätetyp).</li><li><strong>Protokolldaten (Logfiles):</strong> Automatisch erfasste Informationen über Zugriffe auf ein System, z. B. Zeitstempel und IP-Adressen.</li></ul>`,
+  },
+];
+---
+
+<BaseLayout title="Datenschutz" description="Datenschutzerklärung von SHAFTCONSULT.">
+  <Navbar />
+  <main class="section--navy legal">
+    <div class="container legal__inner">
+      <h1 class="h1">Datenschutzerklärung</h1>
+
+      {sections.map((section) => (
+        <div id={section.id}>
+          <h2 class="h4 legal__heading">{section.title}</h2>
+          <div class="legal__body" set:html={section.html} />
+        </div>
+      ))}
+
+      <p class="legal__seal text-small">
+        Basierend auf einer Vorlage von
+        <a href="https://datenschutz-generator.de/" target="_blank" rel="noopener noreferrer nofollow">Dr. Thomas Schwenke — datenschutz-generator.de</a>,
+        angepasst an die tatsächlich auf dieser Website eingesetzten Dienste.
+      </p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal__inner {
+    padding-block: clamp(3rem, 8vw, 5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .legal h1 { margin-bottom: 0.5rem; }
+
+  .legal__heading { margin-bottom: 1rem; }
+
+  .legal__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .legal__body :global(p),
+  .legal__body :global(li) {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .legal__body :global(ul) {
+    margin: 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .legal__body :global(a) { color: #fff; text-decoration: underline; }
+  .legal__body :global(strong) { color: #fff; }
+
+  .legal__seal { color: rgba(255, 255, 255, 0.6); }
+  .legal__seal a { color: rgba(255, 255, 255, 0.6); }
+</style>

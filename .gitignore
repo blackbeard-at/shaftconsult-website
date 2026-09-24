@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+*.log
+preview*.html
+build-preview*.cjs
+.DS_Store

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import KamineffektExplainer from '../components/KamineffektExplainer.astro';
+import UeberLars from '../components/UeberLars.astro';
+import GegenExperte from '../components/GegenExperte.astro';
+import StatsUndRechner from '../components/StatsUndRechner.astro';
+import Erfahrung from '../components/Erfahrung.astro';
+import VierSchritte from '../components/VierSchritte.astro';
+import Zielgruppen from '../components/Zielgruppen.astro';
+import Faq from '../components/Faq.astro';
+import Kontakt from '../components/Kontakt.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Startseite"
+  description="SHAFTCONSULT — unabhängige GEGEN-Expertise für Energieverluste im Aufzugsschacht. Herstellerunabhängige Analyse für Bestandsimmobilien."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <KamineffektExplainer />
+    <UeberLars />
+    <GegenExperte />
+    <StatsUndRechner />
+    <Erfahrung />
+    <VierSchritte />
+    <Zielgruppen />
+    <Faq />
+    <Kontakt />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,116 @@
+---
+import { GA_MEASUREMENT_ID } from '../config/analytics';
+---
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie-Einstellungen" aria-live="polite" hidden>
+  <div class="cookie-banner__inner">
+    <p class="cookie-banner__text">
+      Wir nutzen Google Analytics, um zu verstehen, wie unsere Website genutzt
+      wird. Das setzt Cookies und ist nur mit Ihrer Einwilligung erlaubt.
+      Details dazu in unserer
+      <a href="/datenschutz#m134">Datenschutzerklärung</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button type="button" class="btn btn-outline-dark" data-consent="denied">Ablehnen</button>
+      <button type="button" class="btn btn-fill-navy" data-consent="granted">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    border-top: 1px solid var(--border-light);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .cookie-banner__inner {
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+    padding: 1.25rem var(--page-padding);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .cookie-banner__text {
+    font-size: var(--text-small);
+    color: var(--color-text);
+    max-width: 65ch;
+    margin: 0;
+  }
+
+  .cookie-banner__text a {
+    text-decoration: underline;
+  }
+
+  .cookie-banner__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+</style>
+
+<script define:vars={{ GA_MEASUREMENT_ID }}>
+  const CONSENT_KEY = 'shaftconsult-consent';
+  const banner = document.getElementById('cookie-banner');
+
+  function loadGoogleAnalytics() {
+    if (window.__gaLoaded) return;
+    window.__gaLoaded = true;
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    // IP-Anonymisierung ist bei GA4 für EU-Traffic Standard (siehe Datenschutzerklärung)
+    gtag('config', GA_MEASUREMENT_ID);
+  }
+
+  function applyConsent(value) {
+    if (value === 'granted') {
+      loadGoogleAnalytics();
+    }
+  }
+
+  function openBanner() {
+    banner?.removeAttribute('hidden');
+  }
+
+  function closeBanner() {
+    banner?.setAttribute('hidden', '');
+  }
+
+  // Beim Laden: gespeicherte Entscheidung anwenden, sonst Banner zeigen
+  const stored = localStorage.getItem(CONSENT_KEY);
+  if (stored) {
+    applyConsent(stored);
+  } else {
+    openBanner();
+  }
+
+  banner?.querySelectorAll('[data-consent]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const value = button.getAttribute('data-consent');
+      localStorage.setItem(CONSENT_KEY, value);
+      applyConsent(value);
+      closeBanner();
+    });
+  });
+
+  // Footer-Link "Cookie Einstellungen" ruft das global verfügbar
+  window.openCookieSettings = openBanner;
+</script>

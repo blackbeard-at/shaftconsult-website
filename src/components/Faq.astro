@@ -1,0 +1,81 @@
+---
+const faqs = [
+  {
+    frage: 'Was ist der Kamineffekt?',
+    antwort:
+      'Der Kamineffekt beschreibt das permanente Aufsteigen warmer Luft im Aufzugsschacht. Weil Aufzugsschächte aus Brandschutzgründen eine dauerhafte Öffnung zur Rauchableitung benötigen, entweicht dabei kontinuierlich Heizenergie, unabhängig davon, ob der Aufzug in Betrieb ist. Diese Energieeinsparung im Aufzugsschacht bleibt in den meisten Bestandsgebäuden bislang ungenutzt, obwohl sie sich mit einfachen Mitteln der Schachtentrauchung realisieren lässt.',
+  },
+  {
+    frage: 'Wie läuft die Analyse ab?',
+    antwort:
+      'Nach einem Erstgespräch folgt die technische Erfassung vor Ort. Die Daten werden anschließend ausgewertet und in einem Bericht zusammengefasst. Je nachdem, welche Daten vorliegen, ergibt sich ein umfassender Bericht für Investitionsentscheidungen und Budgetfreigaben. Auf Basis dieses Berichts kann im weiteren Verlauf die Ausschreibung für die technische Umsetzung an Ihrem Aufzug erstellt werden.',
+  },
+  {
+    frage: 'Wie unabhängig ist SHAFTCONSULT?',
+    antwort:
+      'SHAFTCONSULT verkauft keine Produkte und steht für objektive Beurteilung ohne Interessenkonflikte. Es bestehen keine Verträge mit Herstellern von Systemen zur Schachtentrauchung. Die Empfehlung für Ihren Aufzugsschacht basiert ausschließlich auf der technischen und wirtschaftlichen Analyse, nicht auf Herstellerinteressen.',
+  },
+  {
+    frage: 'Was kostet die Analyse?',
+    antwort:
+      'Die Kosten für die Analyse Ihres Aufzugsschachts werden individuell nach Umfang und Aufwand im Erstgespräch geklärt. Sie richten sich nach Größe und Anzahl der zu untersuchenden Aufzüge sowie dem Umfang der gewünschten Handlungsempfehlung.',
+  },
+];
+---
+
+<section id="faq" class="section--navy section faq">
+  <div class="container">
+    <h2 class="h2">FAQ</h2>
+    <p class="faq__sub text-medium">Antworten auf häufige Fragen zum Kamineffekt und zur unabhängigen Analyse.</p>
+
+    <div class="faq__list">
+      {faqs.map((item) => (
+        <div class="faq__row">
+          <p class="faq__question">{item.frage}</p>
+          <p class="faq__answer text-medium">{item.antwort}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="faq__cta">
+      <p class="h4">Noch Fragen?</p>
+      <p class="text-medium">Kontaktieren Sie SHAFTCONSULT direkt für weitere Informationen.</p>
+      <a href="#kontakt" class="btn btn-outline-light">Kontakt</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq h2 { margin-bottom: 0.75rem; }
+  .faq__sub { color: rgba(255, 255, 255, 0.85); margin-bottom: 80px; max-width: 55ch; }
+
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;
+  }
+
+  .faq__row {
+    display: grid;
+    gap: 1.5rem;
+    padding-block: 24px;
+    border-top: 1px solid var(--border-dark);
+  }
+
+  .faq__row:last-child { border-bottom: 1px solid var(--border-dark); }
+
+  .faq__question {
+    font-weight: 700;
+    font-size: var(--text-medium);
+  }
+
+  .faq__answer { color: rgba(255, 255, 255, 0.85); }
+
+  .faq__cta { max-width: 560px; }
+  .faq__cta p.h4 { margin-bottom: 1rem; }
+  .faq__cta p.text-medium { margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.85); }
+
+  @media (min-width: 900px) {
+    .faq__row { grid-template-columns: 500px 1fr; }
+  }
+</style>
