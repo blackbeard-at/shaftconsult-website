@@ -7,8 +7,12 @@ nicht lokal begrenzt). Design 1:1 aus Figma übernommen (Relume-Kit), kein CMS.
 ## Stack
 - Astro (statisch, kein SSR)
 - Inter (selbst gehostet über @fontsource)
-- Deployment-Ziel: Cloudflare Pages, Domain über Strato registriert,
-  DNS/Hosting über Cloudflare (Anleitung dazu ggf. beim Auftraggeber erfragen)
+- Deployment: Cloudflare Workers (statische Assets, `wrangler.jsonc`), baut
+  automatisch bei jedem Push auf `main` — Test-URL
+  https://shaftconsult-website.plain-sky-04db.workers.dev. Domain über Strato
+  registriert, DNS über Cloudflare
+- `build.format: 'file'` in `astro.config.mjs`: Unterseiten liegen unter
+  `/impressum` usw. ohne Schrägstrich am Ende (passend zu Links und Sitemap)
 
 ## Aktueller Stand
 - Alle Sections der Startseite fertig (Hero, Kamineffekt, Über Lars,
