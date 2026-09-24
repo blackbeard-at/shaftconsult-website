@@ -36,6 +36,32 @@ const ogImage = `${siteUrl}/social-share.png`;
     <meta name="twitter:title" content={`${title} — SHAFTCONSULT`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <!-- Strukturierte Daten: bundesweite/internationale Beratung, kein lokal
+         begrenztes Einzugsgebiet -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: 'SHAFTCONSULT',
+      description: 'Herstellerunabhängige Beratung zu Energieverlusten und Brandschutzanforderungen im Aufzugsschacht.',
+      url: siteUrl,
+      image: ogImage,
+      telephone: '+49 1511 4367320',
+      email: 'info@shaftconsult.de',
+      founder: {
+        '@type': 'Person',
+        name: 'Lars Walter-Sinsel',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Bahnhofstraße 14',
+        postalCode: '36037',
+        addressLocality: 'Fulda',
+        addressCountry: 'DE',
+      },
+      areaServed: ['Deutschland', 'weltweit'],
+      sameAs: ['https://www.linkedin.com/in/lars-walter-sinsel-35482a111/'],
+    })} />
   </head>
   <body>
     <slot />

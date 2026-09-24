@@ -5,3 +5,4 @@ dist/
 preview*.html
 build-preview*.cjs
 .DS_Store
+.env*
