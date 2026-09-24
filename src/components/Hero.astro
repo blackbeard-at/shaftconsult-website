@@ -37,6 +37,9 @@ import heroImg from '../assets/images/hero.jpg';
        Media Query), damit Text und Button nicht das ganze Bild verdecken. */
     aspect-ratio: 1440 / 799;
     min-height: 480px;
+    /* Ohne max-width rechnet der Browser min-height über aspect-ratio in eine
+       Mindestbreite um (mobil 560px × 3/4 = 420px) — breiter als das Handy */
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

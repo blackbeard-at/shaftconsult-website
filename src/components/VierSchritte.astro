@@ -61,7 +61,7 @@ const steps = [
      ausgerichtet, nicht am Icon */
   .vier-schritte__list li {
     display: grid;
-    grid-template-columns: 48px 1fr;
+    grid-template-columns: 48px minmax(0, 1fr);
     column-gap: 24px;
     row-gap: 8px;
   }
@@ -78,6 +78,10 @@ const steps = [
     grid-column: 2;
     grid-row: 1;
     align-self: center;
+    /* Lange Wörter wie „Entscheidungsgrundlage“ trennen, statt die Spalte
+       (und damit die Seite) breiter als den Bildschirm zu machen */
+    hyphens: auto;
+    overflow-wrap: break-word;
   }
 
   .vier-schritte__text {
@@ -86,7 +90,12 @@ const steps = [
     color: rgba(255, 255, 255, 0.85);
   }
 
+  /* Zwei Spalten, solange vier zu schmal für die langen Titel wären */
   @media (min-width: 900px) {
-    .vier-schritte__list { grid-template-columns: repeat(4, 1fr); }
+    .vier-schritte__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 1280px) {
+    .vier-schritte__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }
 </style>
