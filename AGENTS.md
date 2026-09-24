@@ -15,14 +15,13 @@ nicht lokal begrenzt). Design 1:1 aus Figma übernommen (Relume-Kit), kein CMS.
   GEGEN-Experte, Kennzahlen+Rechner, Erfahrung, 4-Schritte, Zielgruppen,
   FAQ, Kontakt)
 - Impressum, Datenschutz, AGB, 404 fertig mit echtem Content
-- Cookie-Banner + Google Analytics (Consent-gesteuert) eingebaut
+- Cookie-Banner + Google Analytics (Consent-gesteuert) eingebaut,
+  GA4-Mess-ID `G-Q449YDWX1P` in `src/config/analytics.ts`
 - SEO-Grundlagen: robots.txt, sitemap.xml, Open-Graph-Bild, strukturierte
   Daten (Schema.org `ProfessionalService`, bewusst NICHT lokal begrenzt —
   `areaServed: ["Deutschland", "weltweit"]`)
 
 ## Offene Punkte (mit dem Kunden klären)
-- **GA4 Measurement-ID**: aktuell Platzhalter `G-XXXXXXXXXX` in
-  `src/config/analytics.ts` — echte ID einsetzen, sobald vorhanden
 - **Impressum**: USt-ID und "Geschäftsbereich" sind als "wird nachgereicht"
   markiert — finale Angaben nachtragen
 - **Domain**: robots.txt/sitemap.xml/strukturierte Daten gehen aktuell von

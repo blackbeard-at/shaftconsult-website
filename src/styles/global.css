@@ -4,7 +4,7 @@
 @import '@fontsource/inter/700.css';
 
 :root {
-  --color-navy: #0c2340;
+  --color-navy: #0a1d35;
   --color-steel: #1f5c8b;
   --color-amber: #e8a84a;
   --color-amber-deep: #c47b2e;
@@ -34,6 +34,7 @@
 
   --content-max-width: 1920px;
   --page-padding: clamp(1.5rem, 5vw, 64px);
+  --navbar-height: 104px;
   --section-padding-large: clamp(3rem, 10vw, 112px);
   --section-padding-medium: clamp(2.5rem, 7vw, 80px);
 }
@@ -65,6 +66,16 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
 .section { padding-block: var(--section-padding-large); }
 .section--navy { background: var(--color-navy); color: var(--color-text-on-navy); }
 .section--muted { background: var(--color-bg-muted); }
+
+/* Erster Bereich einer Seite liegt unter der transparenten Navbar: um deren
+   Höhe nach oben gezogen und um dieselbe Höhe verlängert. content-box sorgt
+   dafür, dass height/min-height/aspect-ratio nur für den Bereich unterhalb
+   der Navbar gelten — sichtbar bleibt alles wie mit fester Navbar. */
+.under-navbar {
+  box-sizing: content-box;
+  margin-top: calc(-1 * var(--navbar-height));
+  padding-top: var(--navbar-height);
+}
 
 .h1 { font-size: var(--heading-1); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
 .h2 { font-size: var(--heading-2); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
@@ -98,7 +109,7 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
 .btn-outline-light:hover { border-color: #fff; }
 
 .btn-fill-navy { background: var(--color-navy); border-color: var(--color-navy); color: #fff; }
-.btn-fill-navy:hover { background: #163358; }
+.btn-fill-navy:hover { background: #122a49; }
 
 .btn-fill-light { background: var(--color-button-light); border-color: var(--color-button-light); color: var(--color-text); }
 .btn-fill-light:hover { background: #dadfe2; }

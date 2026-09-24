@@ -6,3 +6,5 @@ preview*.html
 build-preview*.cjs
 .DS_Store
 .env*
+.claude/
+.wrangler/

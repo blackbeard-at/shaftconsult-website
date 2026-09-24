@@ -3,15 +3,15 @@ import Logo from '../assets/icons/logo-inline.svg';
 import LogoIcon from '../assets/icons/logo-icon.svg';
 
 const links = [
-  { href: '#kamineffekt', label: 'Kamineffekt' },
-  { href: '#gegen-experte', label: 'Der GEGEN Experte' },
-  { href: '#ueber-lars', label: 'Über Lars' },
-  { href: '#kompetenz', label: 'Kompetenz' },
-  { href: '#leistungen', label: 'Leistungen' },
+  { href: '/#kamineffekt', label: 'Kamineffekt' },
+  { href: '/#gegen-experte', label: 'Der GEGEN Experte' },
+  { href: '/#ueber-lars', label: 'Über Lars' },
+  { href: '/#kompetenz', label: 'Kompetenz' },
+  { href: '/#leistungen', label: 'Leistungen' },
 ];
 ---
 
-<header class="navbar">
+<header class="navbar navbar--transparent">
   <div class="container navbar__inner">
     <a href="/" class="navbar__logo" aria-label="SHAFTCONSULT Startseite">
       <Logo class="navbar__logo-full" />
@@ -25,7 +25,7 @@ const links = [
           ))}
         </ul>
       </nav>
-      <a href="#kontakt" class="btn btn-fill-navy navbar__cta">Anfragen</a>
+      <a href="/#kontakt" class="btn btn-fill-navy navbar__cta">Anfragen</a>
     </div>
     <button
       class="navbar__burger"
@@ -42,7 +42,7 @@ const links = [
         {links.map((link) => (
           <li><a href={link.href}>{link.label}</a></li>
         ))}
-        <li><a href="#kontakt" class="btn btn-fill-navy navbar__mobile-cta">Anfragen</a></li>
+        <li><a href="/#kontakt" class="btn btn-fill-navy navbar__mobile-cta">Anfragen</a></li>
       </ul>
     </div>
   </nav>
@@ -54,6 +54,41 @@ const links = [
     top: 0;
     z-index: 50;
     background: var(--color-bg-muted);
+    transition: background-color 0.3s ease;
+  }
+
+  .navbar--transparent:not(.is-scrolled) {
+    background: transparent;
+  }
+
+  /* Geöffnetes Mobile-Menü: Leiste und Menü in Navy mit 5 % Transparenz */
+  .navbar:has(.navbar__mobile.is-open) {
+    background: color-mix(in srgb, var(--color-navy) 95%, transparent);
+  }
+
+  /* Heller Inhalt auf dunklem Grund (Seitenanfang: Hero-Foto bzw. Navy,
+     oder geöffnetes Mobile-Menü): Navy-Teile des Logos (inline
+     style-Attribut, daher !important), Links und Burger weiß */
+  :is(.navbar--transparent:not(.is-scrolled), .navbar:has(.navbar__mobile.is-open)) .navbar__logo :global(path[style*="#0c2340"]) {
+    fill: #fff !important;
+  }
+
+  :is(.navbar--transparent:not(.is-scrolled), .navbar:has(.navbar__mobile.is-open)) .navbar__nav a {
+    color: #fff;
+  }
+
+  /* Navy-Button wäre auf navy Grund unsichtbar — heller Rahmen wie
+     .btn-outline-light */
+  :is(.navbar--transparent:not(.is-scrolled), .navbar:has(.navbar__mobile.is-open)) :is(.navbar__cta, .navbar__mobile-cta) {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  :is(.navbar--transparent:not(.is-scrolled), .navbar:has(.navbar__mobile.is-open)) :is(.navbar__cta, .navbar__mobile-cta):hover {
+    border-color: #fff;
+  }
+
+  :is(.navbar--transparent:not(.is-scrolled), .navbar:has(.navbar__mobile.is-open)) .navbar__burger span {
+    background: #fff;
   }
 
   .navbar__inner {
@@ -61,21 +96,22 @@ const links = [
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    height: 104px;
+    height: var(--navbar-height);
   }
 
   .navbar__logo {
     display: block;
     position: relative;
+    flex-shrink: 0;
   }
 
   .navbar__logo-full {
-    width: clamp(140px, 20vw, 180px);
+    width: clamp(185px, 26.4vw, 238px);
   }
 
   .navbar__logo-icon {
     display: none;
-    width: 40px;
+    width: 53px;
   }
 
   .navbar__right {
@@ -140,7 +176,12 @@ const links = [
     transform: rotate(-45deg);
   }
 
+  /* Klappt als Overlay über den Inhalt auf, statt ihn nach unten zu schieben */
   .navbar__mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.3s ease;
@@ -158,17 +199,18 @@ const links = [
   .navbar__mobile ul {
     list-style: none;
     margin: 0;
-    padding: 1rem var(--page-padding) 1.5rem;
+    padding: 1.5rem var(--page-padding) 2.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
-    background: var(--color-bg-muted);
-    border-top: 1px solid var(--border-light);
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    background: color-mix(in srgb, var(--color-navy) 95%, transparent);
   }
 
   .navbar__mobile a {
     text-decoration: none;
-    color: var(--color-text);
+    color: #fff;
     font-weight: 500;
   }
 
@@ -178,12 +220,12 @@ const links = [
   }
 
   /* Icon statt vollem Logo in der mobilen Navigation (Burger-Breakpoint) */
-  @media (max-width: 899px) {
+  @media (max-width: 1099px) {
     .navbar__logo-full { display: none; }
     .navbar__logo-icon { display: block; }
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 1100px) {
     .navbar__right { display: flex; }
     .navbar__nav, .navbar__cta { display: flex; }
     .navbar__burger, .navbar__mobile { display: none !important; }
@@ -194,15 +236,26 @@ const links = [
   const burger = document.querySelector<HTMLButtonElement>('.navbar__burger');
   const mobileNav = document.getElementById('navbar-mobile');
 
-  burger?.addEventListener('click', () => {
-    const isOpen = burger.getAttribute('aria-expanded') === 'true';
+  const setOpen = (open: boolean) => {
+    burger?.setAttribute('aria-expanded', String(open));
+    mobileNav?.classList.toggle('is-open', open);
+  };
 
-    if (isOpen) {
-      burger.setAttribute('aria-expanded', 'false');
-      mobileNav?.classList.remove('is-open');
-    } else {
-      burger.setAttribute('aria-expanded', 'true');
-      mobileNav?.classList.add('is-open');
-    }
+  burger?.addEventListener('click', () => {
+    setOpen(burger.getAttribute('aria-expanded') !== 'true');
   });
+
+  // Menü liegt als Overlay über dem Inhalt — nach Klick auf einen Link
+  // schließen, damit das Sprungziel nicht verdeckt bleibt
+  mobileNav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  const navbar = document.querySelector<HTMLElement>('.navbar--transparent');
+
+  if (navbar) {
+    const updateScrolled = () => navbar.classList.toggle('is-scrolled', window.scrollY > 0);
+    updateScrolled();
+    window.addEventListener('scroll', updateScrolled, { passive: true });
+  }
 </script>

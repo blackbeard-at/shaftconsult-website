@@ -98,6 +98,14 @@ const points = [
 
   .gegen-experte__stage-icon.is-active { opacity: 1; }
 
+  /* Mobile/Tablet: Icon-Bühne 30 % kleiner */
+  @media (max-width: 899px) {
+    .gegen-experte__stage {
+      width: 70%;
+      max-width: calc(425px * 0.7);
+    }
+  }
+
   .gegen-experte__list {
     list-style: none;
     margin: 0;

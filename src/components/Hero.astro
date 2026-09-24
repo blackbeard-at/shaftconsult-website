@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import heroImg from '../assets/images/hero.jpg';
 ---
 
-<section class="hero section--navy">
+<section class="hero section--navy under-navbar">
   <div class="container hero__grid">
     <div class="hero__text">
       <p class="hero__eyebrow"><strong>GEGEN</strong> Energieverluste im Aufzugsschacht</p>
@@ -32,7 +32,6 @@ import heroImg from '../assets/images/hero.jpg';
   .hero {
     position: relative;
     overflow: hidden;
-    padding-block: 65px;
     /* Desktop: Seitenverhältnis exakt wie im Figma-Header (1440 × 799).
        Mobile bekommt unten ein eigenes, deutlich höheres Verhältnis (siehe
        Media Query), damit Text und Button nicht das ganze Bild verdecken. */
@@ -79,18 +78,12 @@ import heroImg from '../assets/images/hero.jpg';
        hält statt ihn als Flex-Item mit Auto-Margin zu zentrieren. */
     margin-inline: 0;
     padding-inline: var(--page-padding);
+    /* Unterer Abstand (vorher padding-block am .hero) */
+    padding-bottom: 65px;
   }
 
   .hero__text {
     max-width: 640px;
-  }
-
-  @media (min-width: 900px) {
-    .hero__text {
-      /* Breiter, damit die zwei per <br/> erzwungenen Zeilen bei 56px auch
-         wirklich je eine Zeile bleiben statt zusätzlich umzubrechen */
-      max-width: 1050px;
-    }
   }
 
   .hero__eyebrow {
@@ -113,5 +106,38 @@ import heroImg from '../assets/images/hero.jpg';
     line-height: 1.5;
     margin-bottom: 2rem;
     color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Desktop: Das Bild skaliert über aspect-ratio linear mit der Breite —
+     Schrift, Abstände und Textbreite skalieren im selben Verhältnis
+     (Figma-Werte bei 1440px ÷ 1440), damit der Text überall gleich zum
+     Portrait steht und es nicht überdeckt. Ab 1440px gelten die
+     Figma-Maximalwerte. Eyebrow und Fließtext behalten eine
+     Lesbarkeits-Untergrenze. */
+  @media (min-width: 900px) {
+    .hero__grid {
+      padding-bottom: min(4.514vw, 65px);
+    }
+
+    /* Breit genug, dass die zwei per <br/> erzwungenen Zeilen je eine
+       Zeile bleiben statt zusätzlich umzubrechen */
+    .hero__text {
+      max-width: min(72.917vw, 1050px);
+    }
+
+    .hero__eyebrow {
+      font-size: clamp(13px, 1.111vw, 16px);
+      margin-bottom: min(0.694vw, 10px);
+    }
+
+    .hero__headline {
+      font-size: min(3.889vw, 56px);
+      margin-bottom: min(1.389vw, 20px);
+    }
+
+    .hero__sub {
+      font-size: clamp(14px, 1.25vw, 18px);
+      margin-bottom: min(2.222vw, 32px);
+    }
   }
 </style>
