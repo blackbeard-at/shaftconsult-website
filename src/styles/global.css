@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 700; }
 p { margin: 0; }
 a { color: inherit; }
 img, svg { max-width: 100%; display: block; }
-button { font-family: inherit; cursor: pointer; background: none; border: none; padding: 0; }
+button { font-family: inherit; color: inherit; cursor: pointer; background: none; border: none; padding: 0; }
 
 .container {
   max-width: var(--content-max-width);
