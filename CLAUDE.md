@@ -13,6 +13,11 @@ nicht lokal begrenzt). Design 1:1 aus Figma übernommen (Relume-Kit), kein CMS.
   registriert, DNS über Cloudflare
 - `build.format: 'file'` in `astro.config.mjs`: Unterseiten liegen unter
   `/impressum` usw. ohne Schrägstrich am Ende (passend zu Links und Sitemap)
+- Live seit 25.09.2026 unter https://shaftconsult.de. In Cloudflare: www →
+  Root per Redirect Rule (301), „Always Use HTTPS“ an, www-DNS-Eintrag ist ein
+  Proxy-Platzhalter (A 192.0.2.1). E-Mail bleibt bei Strato (MX smtpin.rzone.de)
+  — MX-/autoconfig-/SRV-/TXT-Einträge nicht löschen. Search Console per
+  TXT-Eintrag verifiziert
 
 ## Aktueller Stand
 - Alle Sections der Startseite fertig (Hero, Kamineffekt, Über Lars,
@@ -28,9 +33,8 @@ nicht lokal begrenzt). Design 1:1 aus Figma übernommen (Relume-Kit), kein CMS.
 ## Offene Punkte (mit dem Kunden klären)
 - **Impressum**: USt-ID und "Geschäftsbereich" sind als "wird nachgereicht"
   markiert — finale Angaben nachtragen
-- **Domain**: robots.txt/sitemap.xml/strukturierte Daten gehen aktuell von
-  `shaftconsult.de` aus — bei Abweichung in `src/layouts/BaseLayout.astro`
-  (`siteUrl`) und den beiden Dateien in `public/` anpassen
+- **SPF-Eintrag** für die Strato-E-Mail fehlt (DMARC steht auf p=reject) —
+  korrekten Wert aus der Strato-Hilfe als TXT in Cloudflare eintragen
 - **Rechtliche Prüfung**: Datenschutzerklärung und AGB sollten vor Live-Gang
   final von einem Anwalt freigegeben werden
 - Noch keine echten Social-Media-Links außer LinkedIn (Footer)
